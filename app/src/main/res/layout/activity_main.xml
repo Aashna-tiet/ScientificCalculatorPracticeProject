@@ -10,11 +10,11 @@
         android:id="@+id/expression"
         android:layout_width="301dp"
         android:layout_height="55dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="24dp"
         android:editable="false"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.681"
+        app:layout_constraintHorizontal_bias="0.609"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
@@ -60,9 +60,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:onClick="findAnswer"
         android:text="Answer"
-        app:layout_constraintBaseline_toBaselineOf="@+id/modulus"
-        app:layout_constraintStart_toEndOf="@+id/modulus" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/buttonAllClear"
+        app:layout_constraintStart_toEndOf="@+id/buttonAllClear" />
 
     <Button
         android:id="@+id/button8"
@@ -105,10 +106,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="8dp"
         android:text="9"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/result" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonDelete" />
 
     <Button
         android:id="@+id/button1"
@@ -168,10 +169,10 @@
         android:id="@+id/addition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:text="+"
         app:layout_constraintStart_toStartOf="@+id/button1"
-        app:layout_constraintTop_toBottomOf="@+id/button1" />
+        app:layout_constraintTop_toBottomOf="@+id/openBraket" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
@@ -201,12 +202,42 @@
         app:layout_constraintStart_toEndOf="@+id/power" />
 
     <Button
-        android:id="@+id/pi"
+        android:id="@+id/openBraket"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="3.14"
+        android:text="("
         app:layout_constraintBaseline_toBaselineOf="@+id/button0"
         app:layout_constraintStart_toEndOf="@+id/button0" />
+
+    <Button
+        android:id="@+id/closedBracket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text=")"
+        app:layout_constraintBaseline_toBaselineOf="@+id/openBraket"
+        app:layout_constraintStart_toEndOf="@+id/openBraket" />
+
+    <Button
+        android:id="@+id/buttonDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="48dp"
+        android:onClick="deleteNumber"
+        android:text="delete"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/result" />
+
+    <Button
+        android:id="@+id/buttonAllClear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:onClick="clearAllNumbers"
+        android:text="All Clear"
+        app:layout_constraintBaseline_toBaselineOf="@+id/buttonDelete"
+        app:layout_constraintStart_toEndOf="@+id/buttonDelete" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

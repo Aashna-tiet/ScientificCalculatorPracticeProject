@@ -10,14 +10,17 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    EditText xpression;TextView result;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        EditText xpression = (EditText) findViewById(R.id.expression);
-
-        TextView result = (TextView) findViewById(R.id.result);
+        xpression = (EditText) findViewById(R.id.expression);
+        result = (TextView) findViewById(R.id.result);
 
         Button btn0 = (Button) findViewById(R.id.button0);
         Button btn1 = (Button) findViewById(R.id.button1);
@@ -36,17 +39,20 @@ public class MainActivity extends AppCompatActivity {
         Button btnMultiply = (Button) findViewById(R.id.multiply);
         Button btnDiv = (Button) findViewById(R.id.divide);
         Button btnMod = (Button) findViewById(R.id.modulus);
-        Button btnPi = (Button) findViewById(R.id.pi);
         Button Equals = (Button) findViewById(R.id.answer);
+        Button cBracket = (Button) findViewById(R.id.closedBracket);
+        Button oBracket = (Button) findViewById(R.id.openBraket);
+        Button del = (Button) findViewById(R.id.buttonDelete);
+        Button allClear = (Button) findViewById(R.id.buttonAllClear);
 
         View.OnClickListener listener = new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 Button btn  = (Button) v;
                 xpression.append((btn.getText().toString()));
+                result  = (TextView) findViewById(R.id.result);
             }
         };
-
         btn0.setOnClickListener(listener);
         btn1.setOnClickListener(listener);
         btn2.setOnClickListener(listener);
@@ -63,12 +69,34 @@ public class MainActivity extends AppCompatActivity {
         btnSub.setOnClickListener(listener);
         btnMod.setOnClickListener(listener);
         btnMultiply.setOnClickListener(listener);
-        btnPi.setOnClickListener(listener);
-        Equals.setOnClickListener(listener);
 
+        cBracket.setOnClickListener(listener);
+        oBracket.setOnClickListener(listener);
 
-    }
+        }
     // TODO : perform simple calculations like add, subtract, multiply, divide and mod.
 
+    public void findAnswer (View view)
+    {
+        String xp = xpression.getText().toString();
+        ExpressionEvaluator eval = new ExpressionEvaluator();
+        int finalResult = eval.evaluate(xp);
+        String answer = xp+" = "+String.valueOf(finalResult);
+        result.setText(answer);
+        xpression.setText("");
+    }
+
+    public void deleteNumber(View view){
+        String xp = xpression.getText().toString();
+        int l = xp.length();
+        String str = xp.substring(0,l-1);
+        xpression.setText(str);
+    }
+
+    public void clearAllNumbers(View view)
+    {
+        xpression.setText("");
+        result.setText("");
+    }
 
 }
